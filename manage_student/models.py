@@ -64,6 +64,22 @@ class ExUser(AbstractUser):
         return self.email
 
 
+class UserProfile(models.Model):
+    GENDERS = (
+        (_const.OTHER, _const.OTHER),
+        (_const.MALE, _const.MALE),
+        (_const.FEMALE, _const.FEMALE)
+    )
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profile')
+    address = models.CharField(max_length=255, blank=True)
+    photo = models.ImageField(upload_to='uploads', blank=True)
+    gender = models.CharField(max_length=20, choices=GENDERS, default=_const.OTHER)
+    phone = models.CharField(max_length=20, null=True, blank=True)
+
+    class Meta:
+        db_table = 'tbl_user_profile'
+
+
 class StudentModel(models.Model):
     name_student = models.CharField(max_length=255, null=True, blank=True, unique=False)
     sex = models.CharField(max_length=255, null=True, blank=True, unique=False)
