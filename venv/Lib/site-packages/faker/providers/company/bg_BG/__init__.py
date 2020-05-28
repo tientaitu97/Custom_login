@@ -1,5 +1,3 @@
-# coding=utf-8
-from __future__ import unicode_literals
 from .. import Provider as CompanyProvider
 
 
@@ -19,5 +17,5 @@ class Provider(CompanyProvider):
         'OOD', 'ООД',
         'KD', 'КД',
         'KDA', 'КДА',
-        'SD', 'СД'
+        'SD', 'СД',
     )

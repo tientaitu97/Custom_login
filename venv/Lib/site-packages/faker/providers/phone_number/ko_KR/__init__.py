@@ -1,7 +1,5 @@
-# coding=utf-8
-
-from __future__ import unicode_literals
 from .. import Provider as PhoneNumberProvider
+
 
 class Provider(PhoneNumberProvider):
     formats = (
@@ -28,5 +26,5 @@ class Provider(PhoneNumberProvider):
         '017-###-####',
         '018-###-####',
         '019-###-####',
-        '070-####-####'
+        '070-####-####',
     )

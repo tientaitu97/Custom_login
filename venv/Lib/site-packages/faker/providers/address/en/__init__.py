@@ -1,4 +1,3 @@
-from __future__ import unicode_literals
 from .. import Provider as AddressProvider
 
 
@@ -50,5 +49,5 @@ class Provider(AddressProvider):
         'Vanuatu', 'Venezuela', 'Vietnam',
         'Wallis and Futuna', 'Western Sahara',
         'Yemen',
-        'Zambia', 'Zimbabwe'
+        'Zambia', 'Zimbabwe',
     )

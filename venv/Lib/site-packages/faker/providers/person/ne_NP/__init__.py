@@ -1,5 +1,3 @@
-# coding=utf-8
-from __future__ import unicode_literals
 from .. import Provider as PersonProvider
 
 
@@ -250,5 +248,5 @@ class Provider(PersonProvider):
         'दाहाल', 'महर्जन', 'महर्जन', 'जोशी', 'सिंह', 'जोशी',
     )
 
-    prefixes_female = ('श्रीमती', 'सुश्री', )
-    prefixes_male = ('श्री', 'श्रीमान',)
+    prefixes_female = ('श्रीमती', 'सुश्री')
+    prefixes_male = ('श्री', 'श्रीमान')

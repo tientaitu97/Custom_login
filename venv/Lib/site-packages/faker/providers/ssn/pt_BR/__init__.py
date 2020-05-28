@@ -1,11 +1,13 @@
-#  -*- coding: utf-8 -*-
-
-from __future__ import unicode_literals
 from .. import Provider as SsnProvider
-from faker.generator import random
 
 
 def checksum(digits):
+    """
+    Returns the checksum of CPF digits.
+    References to the algorithm:
+    https://pt.wikipedia.org/wiki/Cadastro_de_pessoas_f%C3%ADsicas#Algoritmo
+    https://metacpan.org/source/MAMAWE/Algorithm-CheckDigits-v1.3.0/lib/Algorithm/CheckDigits/M11_004.pm
+    """
     s = 0
     p = len(digits) + 1
     for i in range(0, len(digits)):
@@ -14,7 +16,7 @@ def checksum(digits):
 
     reminder = s % 11
     if reminder == 0 or reminder == 1:
-        return 1
+        return 0
     else:
         return 11 - reminder
 
@@ -27,9 +29,8 @@ class Provider(SsnProvider):
     The cpf return a valid number formatted with brazilian mask. eg nnn.nnn.nnn-nn
     """
 
-    @classmethod
-    def ssn(cls):
-        digits = random.sample(range(10), 9)
+    def ssn(self):
+        digits = self.generator.random.sample(range(10), 9)
 
         dv = checksum(digits)
         digits.append(dv)
@@ -37,7 +38,25 @@ class Provider(SsnProvider):
 
         return ''.join(map(str, digits))
 
-    @classmethod
-    def cpf(cls):
-        c = Provider.ssn()
+    def cpf(self):
+        c = self.ssn()
         return c[:3] + '.' + c[3:6] + '.' + c[6:9] + '-' + c[9:]
+
+    def rg(self):
+        """
+        Brazilian RG, return plain numbers.
+        Check:  https://www.ngmatematica.com/2014/02/como-determinar-o-digito-verificador-do.html
+        """
+
+        digits = self.generator.random.sample(range(0, 9), 8)
+        checksum = sum(i * digits[i - 2] for i in range(2, 10))
+        last_digit = 11 - (checksum % 11)
+
+        if last_digit == 10:
+            digits.append('X')
+        elif last_digit == 11:
+            digits.append(0)
+        else:
+            digits.append(last_digit)
+
+        return ''.join(map(str, digits))

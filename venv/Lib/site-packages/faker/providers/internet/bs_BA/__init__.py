@@ -1,5 +1,3 @@
-# coding=utf-8
-from __future__ import unicode_literals
 from .. import Provider as InternetProvider
 
 
@@ -17,5 +15,5 @@ class Provider(InternetProvider):
         ('ć', 'c'), ('Ć', 'C'),
         ('đ', 'dj'), ('Đ', 'Dj'),
         ('š', 's'), ('Š', 'S'),
-        ('ž', 'z'), ('Ž', 'Z')
+        ('ž', 'z'), ('Ž', 'Z'),
     )

@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from django.urls import reverse_lazy
 
-from exuser.forms import AuthUserFrom
+from manage_student.forms import AuthUserFrom
 
 
 def register(request):

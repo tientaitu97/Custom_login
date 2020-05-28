@@ -1,14 +1,18 @@
+from datetime import datetime
+
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
+from django.db.models.functions import Lower
 from django.shortcuts import render, redirect
 # Create your views here.
+from django.template.defaultfilters import lower
 from django.urls import reverse_lazy
 from djoser.conf import User
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+from manage_student.models import ExUser, ScoreModel, StudentModel, ClassModel, CourseModel,FacultyModel,TrainingSystemModel
 from manage_student.api.serializers.serializers import ExUserSerializers
 from manage_student.forms import AuthUserFrom
 from manage_student.models import ExUser
@@ -74,3 +78,16 @@ class Login(LoginView):
     def get_success_url(self):
         self.success_url = reverse_lazy('news:dashboard')
         return self.success_url
+
+
+def demo(request):
+    a = StudentModel.objects.values_list()
+    b = ScoreModel.objects.values_list()
+    e = a.intersection(b)
+    # cc
+    q = []
+    # for i in e:
+    #     q.append(i.name_student)
+    context = {'q': q,
+               'e': e}
+    return render(request, 'manage_student/demo.html', context)

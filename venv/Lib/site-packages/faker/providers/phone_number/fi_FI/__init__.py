@@ -1,4 +1,3 @@
-from __future__ import unicode_literals
 from .. import Provider as PhoneNumberProvider
 
 
@@ -9,5 +8,5 @@ class Provider(PhoneNumberProvider):
         '+358#########',
         '(+358) #########',
         '0#########',
-        '0## ### ####'
+        '0## ### ####',
     )

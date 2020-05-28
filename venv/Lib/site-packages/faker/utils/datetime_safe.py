@@ -1,5 +1,3 @@
-# coding=utf-8
-
 # From django.utils.datetime_safe
 
 # Python's datetime strftime doesn't handle dates before 1900.
@@ -11,11 +9,12 @@
 # >>> datetime_safe.date(1850, 8, 2).strftime("%Y/%m/%d was a %A")
 # '1850/08/02 was a Friday'
 
-from __future__ import unicode_literals
-from datetime import date as real_date
-from datetime import datetime as real_datetime
+
 import re
 import time
+
+from datetime import date as real_date
+from datetime import datetime as real_datetime
 
 
 class date(real_date):
@@ -60,7 +59,7 @@ def _findall(text, substr):
     # Also finds overlaps
     sites = []
     i = 0
-    while 1:
+    while True:
         j = text.find(substr, i)
         if j == -1:
             break

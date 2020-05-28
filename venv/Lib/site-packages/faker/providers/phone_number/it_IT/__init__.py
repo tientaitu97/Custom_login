@@ -1,4 +1,3 @@
-from __future__ import unicode_literals
 from .. import Provider as PhoneNumberProvider
 
 
@@ -10,5 +9,5 @@ class Provider(PhoneNumberProvider):
         '+39 ### #######',
         '+39 ### ########',
         '+39 #### #######',
-        '+39 #### ########'
+        '+39 #### ########',
     )

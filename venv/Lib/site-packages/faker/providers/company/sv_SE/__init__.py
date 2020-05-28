@@ -1,6 +1,3 @@
-# coding=utf-8
-
-from __future__ import unicode_literals
 from .. import Provider as CompanyProvider
 
 
@@ -12,5 +9,5 @@ class Provider(CompanyProvider):
     )
 
     company_suffixes = (
-        'AB', 'HB'
+        'AB', 'HB',
     )
