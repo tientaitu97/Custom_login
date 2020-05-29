@@ -32,6 +32,7 @@ from manage_student.models import ExUser
 #
 #
 def register(request):
+    q =[]
     return render(request, 'manage_student/register.html')
 
 
