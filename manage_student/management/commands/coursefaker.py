@@ -25,7 +25,7 @@ def start_date(name):
 
 
 def end_date(name):
-    if name == 'D13':
+    if name == 'D134':
         return "2017-08-15"
     elif name == 'D14':
         return "2018-08-15"
